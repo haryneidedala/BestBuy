@@ -1,8 +1,11 @@
+"""Main module for the store management system."""
+
 from products import Product
 from store import Store
 
+
 def setup_initial_inventory():
-    """Creates and returns a Store with default inventory"""
+    """Create and return a Store with default inventory."""
     product_list = [
         Product("MacBook Air M2", price=1450, quantity=100),
         Product("Bose QuietComfort Earbuds", price=250, quantity=500),
@@ -10,19 +13,22 @@ def setup_initial_inventory():
     ]
     return Store(product_list)
 
+
 def list_all_products(store):
-    """Lists all active products in the store"""
+    """List all active products in the store."""
     print("\nAvailable Products:")
     for i, product in enumerate(store.get_all_products(), 1):
         print(f"{i}. ", end="")
         product.show()
 
+
 def show_total_amount(store):
-    """Shows total quantity of all products in store"""
+    """Show total quantity of all products in store."""
     print(f"\nTotal amount in store: {store.get_total_quantity()}")
 
+
 def make_order(store):
-    """Handles the order process"""
+    """Handle the order process."""
     products = store.get_all_products()
     if not products:
         print("No products available!")
@@ -55,11 +61,12 @@ def make_order(store):
             print(f"\nOrder successful! Total price: ${total:.2f}")
         else:
             print("No items ordered")
-    except Exception as e:
-        print(f"\nError processing order: {e}")
+    except ValueError as error:
+        print(f"\nError processing order: {error}")
+
 
 def start(store):
-    """Main menu interface"""
+    """Display main menu interface."""
     while True:
         print("\nStore Menu:")
         print("1. List all products in store")
@@ -81,10 +88,12 @@ def start(store):
         else:
             print("Invalid choice. Please enter a number between 1-4")
 
+
 def main():
-    """Entry point of the program"""
+    """Entry point of the program."""
     best_buy = setup_initial_inventory()
     start(best_buy)
+
 
 if __name__ == "__main__":
     main()
