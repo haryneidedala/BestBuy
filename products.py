@@ -1,7 +1,7 @@
 """This module contains the Product class for managing store products."""
 
 class Product:
-    """A class representing a product in the store."""
+    """A class representing a product in the store with name, price and quantity."""
     
     def __init__(self, name: str, price: float, quantity: int):
         """Initialize a product with name, price, and quantity."""
@@ -71,7 +71,6 @@ def main():
 
     bose.set_quantity(1000)
     bose.show()
-
 
 if __name__ == "__main__":
     main()

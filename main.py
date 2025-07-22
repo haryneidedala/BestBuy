@@ -94,6 +94,6 @@ def main():
     best_buy = setup_initial_inventory()
     start(best_buy)
 
-
 if __name__ == "__main__":
     main()
+    

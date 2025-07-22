@@ -5,11 +5,11 @@ from products import Product
 
 
 class Store:
-    """A class representing a store that holds products."""
+    """A class representing a store that holds and manages products."""
     
     def __init__(self, products: List[Product]):
         """Initialize the store with a list of products."""
-        self.products = products  # List to store all products
+        self.products = products
 
     def add_product(self, product: Product):
         """Add a product to the store."""
@@ -32,10 +32,7 @@ class Store:
         return [product for product in self.products if product.is_active()]
 
     def order(self, shopping_list: List[tuple]) -> float:
-        """
-        Process an order with a shopping list of products and quantities.
-        Returns total price of the order.
-        """
+        """Process an order and return total price."""
         total_price = 0.0
         for product, quantity in shopping_list:
             if product not in self.products:
@@ -46,18 +43,17 @@ class Store:
 
 def main():
     """Test function for Store class."""
-    from products import Product
-    
-    product_list = [Product("MacBook Air M2", price=1450, quantity=100),
-                    Product("Bose QuietComfort Earbuds", price=250, quantity=500),
-                    Product("Google Pixel 7", price=500, quantity=250)]
+    product_list = [
+        Product("MacBook Air M2", price=1450, quantity=100),
+        Product("Bose QuietComfort Earbuds", price=250, quantity=500),
+        Product("Google Pixel 7", price=500, quantity=250)
+    ]
     
     best_buy = Store(product_list)
     products = best_buy.get_all_products()
     
     print(best_buy.get_total_quantity())
     print(best_buy.order([(products[0], 1), (products[1], 2)]))
-
 
 if __name__ == "__main__":
     main()
